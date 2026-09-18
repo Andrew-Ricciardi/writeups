@@ -25,7 +25,7 @@ alerts, and the browser itself becomes the delivery channel.
 antivirus expired. The download is the malware, or a signed binary that pulls one.
 
 **4. Tech support scam and browser locker.** A loud page, a siren, "your computer is infected, call this number".
-Some of them fight back with a loop that keeps reopening the tab or a fullscreen request, which is social engineering
+Some of them fight back with a loop that keeps reopening the tab or a fullscreen request, wich is social engineering
 with a bit of script behind it.
 
 **5. Malvertising and redirect chains.** A real ad slot on a real site redirects through several domains, and the
@@ -39,7 +39,39 @@ somewhere else. Nothing looks wrong to the shopper.
 
 **8. Obfuscation and hidden frames.** Long base64 blobs, `eval`, `atob`, `fromCharCode`, `document.write` chains,
 invisible iframes, or a page whose entire HTML response is a few characters and a redirect. Obfuscation is not proof of
-malice, but it is a reason to stop and read.
+malice, but it is definately a reason to stop and read.
+
+## Hardware anonymisation sites, and why I dont trust them either
+
+There is a whole category of site selling "hardware anonymisation": change your HWID, clean your SMBIOS, repair or
+randomise serials, hide your machine from whoever is fingerprinting it. Some of it is marketed at privacy, most of it
+gets bought by people trying to get around a game or platform ban, and the sites know it.
+
+The trust problem here is structural. To change identifiers that live in firmware and drivers, the tool needs deeper
+access to your machine than almost anything else you run: a kernel driver, a loader that asks for admin, something that
+has to run before the rest of the system or it does not work at all. You cannot audit that. So the deal on offer is
+"give me ring 0 and I will change a string in SMBIOS". That is a bad trade even when the vendor is honest, and there is
+no verifiable reason to assume the vendor is honest.
+
+Things I treat as red flags on these sites:
+
+- a driver or loader you have to whitelist in your antivirus, or an instruction to turn protection off first
+- tiers, subscriptions and "permanent" versus "temporary" fixes, since a permanent change is usually a firmware level
+  change you can not undo
+- no named developer, no company, no way to check the code, just a checkout page and a download
+- claims that it defeats a specific anti-cheat or platform check, which is the same as saying the site's whole business
+  depends on that company not fixing it
+- activation or telemetry that has to phone home before the tool will do anything
+
+There is also a boring technical point: plenty of these tools are partly snake oil. Several identifiers get re-read at a
+higher privilege level than the tool can reach, or reset on reboot, or live in a component the tool does not touch. So
+you can pay, hand over kernel access, break a driver, and still be exactly as fingerprinted as before.
+
+If you are curious about one, treat it like any other untrusted download, only more so: a throwaway VM with snapshots,
+never the machine you actually use, no personal accounts signed in, check who signed any driver before it loads, and
+assume that anything you ran in there is compromised afterwards. For actual privacy work, the supported OS and browser
+settings get you part of the way without handing a stranger ring 0, and raw IP adresses, cookies and browser
+fingerprints are seperate problems with their own fixes.
 
 ## What Browser Guard does about it
 
@@ -81,6 +113,7 @@ happens at request time, on the real page, not on a cached copy.
 | Same link, different page for different people | Cloaking, evade scanners |
 | Checkout page loading a script from an odd host | Card skimmer |
 | HTML that is mostly one obfuscated blob | Something is hidden |
+| "Permanent HWID change", driver must be whitelisted | An unauditable kernel tool, at best |
 
 ## Sources
 
