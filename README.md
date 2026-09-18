@@ -1,11 +1,25 @@
 # writeups
 
-Study notes on vulnerabilities I read about. Mostly other people's findings, explained in my own words so I actually
-understand them, with credit and links to the original work at the top of every page.
+Study notes on vulnerabilities and web threats I read about. Mostly other people's findings, explained in my own words
+so I actually understand them, with credit and links to the original work at the top of every page.
+
+## Vulnerabilities
 
 | Study | What it is | Published |
 | --- | --- | --- |
 | [CVE-2026-68904](CVE-2026-68904/) | node-opcua leaks a TCP socket every keepalive cycle when the server clock is skewed | 2026-09-16 |
+
+## Web threats
+
+| Study | What it is | Published |
+| --- | --- | --- |
+| [Malicious websites](malicious-websites/) | the patterns behind scam and malware pages, and how browser level blockers such as Malwarebytes Browser Guard catch them | 2026-09-17 |
+
+## Notes
+
+| Note | What it is | Published |
+| --- | --- | --- |
+| [When reading about security gets you blocked](notes/cyber-blocks.md) | what I worked out about false positives, framing, and what actually helps | 2026-09-17 |
 
 Ground rules for this repo:
 
