@@ -41,7 +41,10 @@ somewhere else. Nothing looks wrong to the shopper.
 invisible iframes, or a page whose entire HTML response is a few characters and a redirect. Obfuscation is not proof of
 malice, but it is definately a reason to stop and read.
 
-## Three kinds of site I dont touch, that plenty of people do
+## Three kinds of site I read for fun, from a safe distance
+
+These are a hobby for me. The pitches are a genre of their own and reading them is genuinely interesting. Installing
+anything from one is a seperate decision, and thats the part I skip.
 
 **1. Hardware anonymisers.** Sites selling "change your HWID, clean your SMBIOS, randomise your serials". To touch
 identifiers that live in firmware and drivers, the tool needs a kernel driver or a loader with admin rights, and you
@@ -58,10 +61,10 @@ finding out which of the two they got.
 patched to skip licensing has already had its integrity thrown away, so the patched copy can carry anything, and the
 sites hosting them make their money from the download page rather than from the file.
 
-What all three have in common: you run something with more privilege than you would hand a stranger, from someone with
-no real incentive to be straight with you, in order to beat a check that is not yours. If you do want to look at one,
-throwaway VM with snapshots, no personal accounts, check the signature on any driver before it loads, and assume that
-anything you ran in there is compromised.
+What all three have in common: they ask you to run something with more privilege than you would hand a stranger, from
+someone with no real incentive to be straight with you, in order to beat a check that is not yours. That is exactly why
+they are interesting to read and a bad idea to install. When I look at one it is offline, in a throwaway VM with
+snapshots, no personal accounts, and I check the signature on any driver before letting it load.
 
 ## What Browser Guard does about it
 
