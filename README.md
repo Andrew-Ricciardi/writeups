@@ -13,7 +13,7 @@ so I actually understand them, with credit and links to the original work at the
 
 | Study | What it is | Published |
 | --- | --- | --- |
-| [Malicious websites](malicious-websites/) | the patterns behind scam and malware pages, three kinds of site I like reading, and how browser level blockers such as Malwarebytes Browser Guard catch them | 2026-09-17 |
+| [Malicious websites](malicious-websites/) | the patterns behind scam and malware pages, five kinds of site I like reading, and how browser level blockers such as Malwarebytes Browser Guard catch them | 2026-09-17 |
 
 ## Notes
 
