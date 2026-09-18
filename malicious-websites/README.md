@@ -41,37 +41,27 @@ somewhere else. Nothing looks wrong to the shopper.
 invisible iframes, or a page whose entire HTML response is a few characters and a redirect. Obfuscation is not proof of
 malice, but it is definately a reason to stop and read.
 
-## Hardware anonymisation sites, and why I dont trust them either
+## Three kinds of site I dont touch, that plenty of people do
 
-There is a whole category of site selling "hardware anonymisation": change your HWID, clean your SMBIOS, repair or
-randomise serials, hide your machine from whoever is fingerprinting it. Some of it is marketed at privacy, most of it
-gets bought by people trying to get around a game or platform ban, and the sites know it.
+**1. Hardware anonymisers.** Sites selling "change your HWID, clean your SMBIOS, randomise your serials". To touch
+identifiers that live in firmware and drivers, the tool needs a kernel driver or a loader with admin rights, and you
+cannot audit either one. So the deal on offer is "give me ring 0 and I will change a string". A fair few of them are
+also partly snake oil, because some of those identifiers get re-read at a higher privilege level than the tool can
+reach, or simply reset on reboot.
 
-The trust problem here is structural. To change identifiers that live in firmware and drivers, the tool needs deeper
-access to your machine than almost anything else you run: a kernel driver, a loader that asks for admin, something that
-has to run before the rest of the system or it does not work at all. You cannot audit that. So the deal on offer is
-"give me ring 0 and I will change a string in SMBIOS". That is a bad trade even when the vendor is honest, and there is
-no verifiable reason to assume the vendor is honest.
+**2. Game cheat and mod menu sites.** Same shape, worse odds. The download is a driver or an injector running with
+admin, from a vendor whose entire product is defeating a check somebody else owns. When the anti-cheat catches up the
+account goes, and when the vendor turns out to be a stealer the machine goes with it. Their forums are full of people
+finding out which of the two they got.
 
-Things I treat as red flags on these sites:
+**3. Cracked software and "pre activated" installers.** The busiest of the three and the least necessary. An installer
+patched to skip licensing has already had its integrity thrown away, so the patched copy can carry anything, and the
+sites hosting them make their money from the download page rather than from the file.
 
-- a driver or loader you have to whitelist in your antivirus, or an instruction to turn protection off first
-- tiers, subscriptions and "permanent" versus "temporary" fixes, since a permanent change is usually a firmware level
-  change you can not undo
-- no named developer, no company, no way to check the code, just a checkout page and a download
-- claims that it defeats a specific anti-cheat or platform check, which is the same as saying the site's whole business
-  depends on that company not fixing it
-- activation or telemetry that has to phone home before the tool will do anything
-
-There is also a boring technical point: plenty of these tools are partly snake oil. Several identifiers get re-read at a
-higher privilege level than the tool can reach, or reset on reboot, or live in a component the tool does not touch. So
-you can pay, hand over kernel access, break a driver, and still be exactly as fingerprinted as before.
-
-If you are curious about one, treat it like any other untrusted download, only more so: a throwaway VM with snapshots,
-never the machine you actually use, no personal accounts signed in, check who signed any driver before it loads, and
-assume that anything you ran in there is compromised afterwards. For actual privacy work, the supported OS and browser
-settings get you part of the way without handing a stranger ring 0, and raw IP adresses, cookies and browser
-fingerprints are seperate problems with their own fixes.
+What all three have in common: you run something with more privilege than you would hand a stranger, from someone with
+no real incentive to be straight with you, in order to beat a check that is not yours. If you do want to look at one,
+throwaway VM with snapshots, no personal accounts, check the signature on any driver before it loads, and assume that
+anything you ran in there is compromised.
 
 ## What Browser Guard does about it
 
@@ -95,7 +85,7 @@ happens at request time, on the real page, not on a cached copy.
 2. Pull the HTML, do not execute it. `curl -sL <url> -o page.html` in a throwaway VM, then read it offline with scripts
    stripped in your head, not in a browser.
 3. Grep for the tells: `atob`, `eval`, `fromCharCode`, `unescape`, `document.write`, `iframe src=`, `window.location`,
-   `fetch(` or `XMLHttpRequest` pointed at raw IP addresses, base64 blobs several hundred characters long.
+   `fetch(` or `XMLHttpRequest` pointed at raw IP adresses, base64 blobs several hundred characters long.
 4. Check where it wants to send you: every host in the file, and whether any of them are raw IPs, freshly registered
    lookalike domains, or free hosting subdomains.
 5. Defang everything you write down. `hxxps://example[.]com` so nobody, including you, accidentally clicks it later.
@@ -113,7 +103,7 @@ happens at request time, on the real page, not on a cached copy.
 | Same link, different page for different people | Cloaking, evade scanners |
 | Checkout page loading a script from an odd host | Card skimmer |
 | HTML that is mostly one obfuscated blob | Something is hidden |
-| "Permanent HWID change", driver must be whitelisted | An unauditable kernel tool, at best |
+| Any tool that needs a driver you must whitelist | An unauditable kernel download |
 
 ## Sources
 
