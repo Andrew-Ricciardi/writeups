@@ -72,7 +72,7 @@ reason to trust. The tell is the instruction, not the domain.
 These are a hobby for me. The pitches are a genre of their own and reading them is genuinely interesting. Installing
 anything from one is a separate decision, and that's the part I skip.
 
-**1. Hardware anonymisers.** Sites selling "change your HWID, clean your SMBIOS, randomise your serials". To touch
+**1. Hardware "anonymisers" (spoofer).** Sites selling "change your HWID, clean your SMBIOS, randomise your serials". To touch
 identifiers that live in firmware and drivers, the tool needs a kernel driver or a loader with admin rights, and you
 cannot audit either one. So the deal on offer is "give me ring 0 and I will change a string". A fair few of them are
 also partly snake oil, because some of those identifiers get re-read at a higher privilege level than the tool can
