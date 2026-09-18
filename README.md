@@ -15,12 +15,6 @@ so I actually understand them, with credit and links to the original work at the
 | --- | --- | --- |
 | [Malicious websites](malicious-websites/) | the patterns behind scam and malware pages, five kinds of site I like reading, and how browser level blockers such as Malwarebytes Browser Guard catch them | 2026-09-17 |
 
-## Notes
-
-| Note | What it is | Published |
-| --- | --- | --- |
-| [When reading about security gets you blocked](notes/cyber-blocks.md) | what I worked out about false positives, framing, and what actually helps | 2026-09-17 |
-
 Ground rules for this repo:
 
 - Nothing here is my own disclosure unless the page says so in the first line. Most of it is study, not research.
